@@ -1,0 +1,22 @@
+{
+    "name": "westwallet/westwallet-php-api",
+    "description": "WestWallet API library",
+    "keywords": [ "cryptocurrency", "payments", "finance" ],
+    "homepage": "https://github.com/WestWallet/westwallet-php-api",
+    "type": "library",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-4": {
+            "WestWallet\\WestWallet\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": ["tests"]
+    },
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "config": {
+        "bin-dir": "bin/"
+    }
+}
