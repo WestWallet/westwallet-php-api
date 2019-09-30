@@ -27,7 +27,7 @@ Create withdrawal example
     use WestWallet\WestWallet\Client;
     use WestWallet\WestWallet\InsufficientFundsException;
 
-    $client = new Client("your_api_key", "your_api_secret");
+    $client = new Client("your_public_key", "your_private_key");
 
     // Send 0.1 ETH to 0x57689002367b407f031f1BB5Ef2923F103015A32
     try {
@@ -48,7 +48,7 @@ Generate address example
     use WestWallet\WestWallet\Client;
     use WestWallet\WestWallet\CurrencyNotFoundException;
 
-    $client = new Client("your_api_key", "your_api_secret");
+    $client = new Client("your_public_key", "your_private_key");
 
     // Send 0.1 ETH to 0x57689002367b407f031f1BB5Ef2923F103015A32
     try {
