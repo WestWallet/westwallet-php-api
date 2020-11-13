@@ -86,20 +86,19 @@ class Client {
 
     private function makeRequest($methodURL, $method, $data = array()) {
         $timestamp = time();
-        if($methodURL == 'wallet/transaction'){
-            $body = json_encode($data, JSON_NUMERIC_CHECK|JSON_UNESCAPED_SLASHES);
+        if (empty($data)) {
+            $body = "";
         } else {
-            $body = json_encode($data, JSON_UNESCAPED_SLASHES);
+            $body = json_encode($data);
         }
-
         if ($method == "POST") {
+            $requestData = json_encode($data);
             $request = curl_init($this->basicURL.$methodURL);
-            curl_setopt($request, CURLOPT_POSTFIELDS, $body);
+            curl_setopt($request, CURLOPT_POSTFIELDS, $requestData);
         } else {
             $requestData = http_build_query($data);
             $request = curl_init($this->basicURL.$methodURL."?".$requestData);
         }
-        echo($timestamp.$body);
         $signature = hash_hmac("sha256", $timestamp.$body, $this->secretKey);
         curl_setopt($request, CURLOPT_FAILONERROR, TRUE);
         curl_setopt($request, CURLOPT_RETURNTRANSFER, TRUE);
