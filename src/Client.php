@@ -15,6 +15,16 @@ class Client {
         $this->basicURL = $basicURL;
     }
 
+    public function transactionsList($currency='', $limit=10, $offset=0, $type='', $order='desc') {
+        $data = array();
+        $data['currency'] = $currency;
+        $data['limit'] = $limit;
+        $data['offset'] = $offset;
+        $data['type'] = $type;
+        $data['order'] = $order;
+        return $this->makeRequest('/wallet/transactions', "POST", $data);
+    }
+
     public function walletBalance($currency) {
         $data = array();
         $data['currency'] = $currency;
