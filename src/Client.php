@@ -109,7 +109,7 @@ class Client {
             $requestData = http_build_query($data);
             $request = curl_init($this->basicURL.$methodURL."?".$requestData);
         }
-        $signature = hash_hmac("sha256", $timestamp.$body, $this->secretKey);
+        $signature = hash_hmac("sha256", $timestamp.$requestData, $this->secretKey);
         curl_setopt($request, CURLOPT_FAILONERROR, TRUE);
         curl_setopt($request, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($request, CURLOPT_SSL_VERIFYPEER, 0);
