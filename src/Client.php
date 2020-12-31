@@ -102,7 +102,7 @@ class Client {
             $body = json_encode($data);
         }
         if ($method == "POST") {
-            $requestData = json_encode($data);
+            $requestData = json_encode($data, JSON_UNESCAPED_SLASHES);
             $request = curl_init($this->basicURL.$methodURL);
             curl_setopt($request, CURLOPT_POSTFIELDS, $requestData);
         } else {
