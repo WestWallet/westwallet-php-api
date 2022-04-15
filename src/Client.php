@@ -101,13 +101,12 @@ class Client {
         } else {
             $body = json_encode($data);
         }
+        $requestData = json_encode($data, JSON_UNESCAPED_SLASHES);
         if ($method == "POST") {
-            $requestData = json_encode($data, JSON_UNESCAPED_SLASHES);
             $request = curl_init($this->basicURL.$methodURL);
             curl_setopt($request, CURLOPT_POSTFIELDS, $requestData);
         } else {
-            $requestData = http_build_query($data);
-            $request = curl_init($this->basicURL.$methodURL."?".$requestData);
+            $request = curl_init($this->basicURL.$methodURL."?".http_build_query($data));
         }
         $signature = hash_hmac("sha256", $timestamp.$requestData, $this->secretKey);
         curl_setopt($request, CURLOPT_FAILONERROR, TRUE);
