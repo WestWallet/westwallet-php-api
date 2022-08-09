@@ -108,7 +108,12 @@ class Client {
         } else {
             $request = curl_init($this->basicURL.$methodURL."?".http_build_query($data));
         }
-        $signature = hash_hmac("sha256", $timestamp.$requestData, $this->secretKey);
+        if ($requestData != "[]") {
+        	$hmacMessage = $timestamp.$requestData;
+        } else {
+        	$hmacMessage = $timestamp;
+        }
+        $signature = hash_hmac("sha256", $hmacMessage, $this->secretKey);
         curl_setopt($request, CURLOPT_FAILONERROR, TRUE);
         curl_setopt($request, CURLOPT_RETURNTRANSFER, TRUE);
         curl_setopt($request, CURLOPT_SSL_VERIFYPEER, 0);
