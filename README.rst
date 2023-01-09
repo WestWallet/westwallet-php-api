@@ -4,7 +4,7 @@ westwallet-php-api
     :alt: packagist
     :target: https://packagist.org/packages/westwallet/westwallet-php-api
 
-westwallet-php-api is a `WestWallet Public API <https://westwallet.info/api_docs>`_ wrapper for PHP programming language. Use it for building payment solutions.
+westwallet-php-api is a `WestWallet Public API <https://westwallet.io/api_docs>`_ wrapper for PHP programming language. Use it for building payment solutions.
 
 Installing
 ----------
@@ -61,7 +61,7 @@ Generate address example
 
 Documentation
 -------------
-* API: https://westwallet.info/api_docs
+* API: https://westwallet.io/api_docs
 
 
 Other languages
