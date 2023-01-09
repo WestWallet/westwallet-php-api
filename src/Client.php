@@ -9,7 +9,7 @@ class Client {
     private $secretKey = '';
     private $basicURL = '';
 
-    function __construct($apiKey, $secretKey, $basicURL="https://api.westwallet.info"){
+    function __construct($apiKey, $secretKey, $basicURL="https://api.westwallet.io"){
         $this->apiKey = $apiKey;
         $this->secretKey = $secretKey;
         $this->basicURL = $basicURL;
