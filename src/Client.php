@@ -66,6 +66,21 @@ class Client {
         return $this->makeRequest('/address/generate', "POST", $data);
     }
 
+    public function createInvoice($currencies, $amount, $ipn_url, $amount_in_usd=false, $success_url="", $description="", $label="", $ttl=15) {
+                
+        $data = array();
+        $data['currencies'] = $currencies;
+        $data['amount'] = $amount;
+        $data['ipn_url'] = $ipn_url;
+        $data['amount_in_usd'] = $amount_in_usd;
+        $data['success_url'] = $success_url;
+        $data['description'] = $description;
+        $data['ttl'] = $ttl;
+        $data['label'] = $label;
+        
+        return $this->makeRequest('/address/create_invoice', "POST", $data);
+    }
+
     private function checkErrors($request, $requestJson) {
         $exceptions = array(
             "account_blocked" => new AccountBlockedException,
